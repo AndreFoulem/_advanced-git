@@ -1,13 +1,17 @@
 # Advanced Git
-## Exercise One - Under The Hood of a Simple Commit
+
+## Exercise One d- Under The Hood of a Simple Commit
 
 ### Overview
+
 In this exercise, we'll create a simple commit, and then peek under the hood at the objects stored in our `.git` folder to gain some insight into how things work.
 
 ### Prerequisite
+
 If you have a Mac with `brew` set up, install `tree`. This makes it easy to visualize the contents of your `.git` folder.
 
 ### Exercise
+
 1. Create a new folder and initialize it as a git repo
 2. Create a file, stage it, and commit it to your new repo
 3. Look at your `.git` folder, using `tree` if you have it
@@ -17,6 +21,7 @@ If you have a Mac with `brew` set up, install `tree`. This makes it easy to visu
 ## Solutions
 
 ### Step 1 - Initialize the Repo
+
 Create a new sample project folder. Run `git status` to see that it is not yet a git repository. Use `git init` to initialize it as a repository.
 
 ```
@@ -32,6 +37,7 @@ Initialized empty Git repository in /Users/nnja/projects/sample/.git/
 ```
 
 ### Step 2 - First Commit
+
 Create a new document, stage it for a commit, then commit it to your repository.
 
 ```
@@ -46,6 +52,7 @@ $> git commit -m "Initial commit"
 ```
 
 ### Step 3 - View the .git Folder
+
 Using `tree`, look in your `.git/objects` folder, you should now see three objects, represented by long SHA1 hashes. These represent the tree, blob, and commit that we created in the last step.
 
 ```
@@ -80,6 +87,7 @@ $> tree .git
 ```
 
 ### Step 4 - Inspect the Objects:
+
 Note: The SHA1 hash for your commit will be different than the one displayed here. The SHA1 hash for your `blob` and `tree` will be the same as mine, as long as the content is the same.
 
 One of the objects should be a tree object. The tree contains the filename `hello.txt` and a pointer to the blob.
@@ -116,7 +124,7 @@ committer Nina Zakharenko <nina@nnja.io> 1507168309 -0700
 Initial commit
 ```
 
-Because this is our very first commit, it doesn't have a parent. The next commit we make will point to our initial commit as the parent. 
+Because this is our very first commit, it doesn't have a parent. The next commit we make will point to our initial commit as the parent.
 
 ### Step 5 - Look at refs
 
@@ -131,6 +139,7 @@ ref: refs/heads/master
 $> cat .git/refs/heads/master
 43388fee19744e8893467331d7853a6475a227b8
 ```
+
 `43388f...` is the hash of the commit we saw in the last step. You can confirm this by running `git log`
 
 ```
